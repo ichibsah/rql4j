@@ -5,7 +5,7 @@
 Here will find a short howto use the rql4j api. For more examples take a look into the *Test Classes*.
 
 
-= Short Howto =
+= Short HowTo =
 == Initialisation ==
 {{{
 CmsServer server = new CmsServer("http://your-otms/cms/webservice/rdcmsxmlserver.wsdl");
