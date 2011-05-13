@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- Generated 09/22/10 by Microsoft SOAP Toolkit WSDL File Generator, Version 3.00.1325.0 --> 
+<definitions
+	name='RDCMSXMLServer'
+	targetNamespace='http://tempuri.org/RDCMSXMLServer/webservice/'
+	xmlns:wsdlns='http://tempuri.org/RDCMSXMLServer/webservice/'
+	xmlns:typens='http://tempuri.org/RDCMSXMLServer/type/'
+	xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+	xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+	xmlns:stk='http://schemas.microsoft.com/soap-toolkit/wsdl-extension'
+	xmlns:dime='http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/'
+	xmlns:ref='http://schemas.xmlsoap.org/ws/2002/04/reference/'
+	xmlns:content='http://schemas.xmlsoap.org/ws/2002/04/content-type/'
+	xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+	xmlns='http://schemas.xmlsoap.org/wsdl/'>
+
+	<types>
+		<schema
+			targetNamespace='http://tempuri.org/RDCMSXMLServer/type/'
+			xmlns='http://www.w3.org/2001/XMLSchema'
+			xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/'
+			xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+			elementFormDefault='qualified'>
+
+			<import namespace='http://schemas.xmlsoap.org/soap/encoding/'/>
+			<import namespace='http://schemas.xmlsoap.org/wsdl/'/>
+			<import namespace='http://schemas.xmlsoap.org/ws/2002/04/reference/'/>
+			<import namespace='http://schemas.xmlsoap.org/ws/2002/04/content-type/'/>
+
+		</schema>
+	</types>
+
+	<message name='XmlServer.Execute'>
+		<part name='sParamA' type='xsd:string'/>
+		<part name='sErrorA' type='xsd:string'/>
+		<part name='sResultInfoA' type='xsd:string'/>
+	</message>
+
+	<message name='XmlServer.ExecuteResponse'>
+		<part name='Result' type='xsd:string'/>
+		<part name='sErrorA' type='xsd:string'/>
+		<part name='sResultInfoA' type='xsd:string'/>
+	</message>
+
+	<portType name='XmlServerSoapPort'>
+
+		<operation name='Execute' parameterOrder='sParamA sErrorA sResultInfoA'>
+			<input message='wsdlns:XmlServer.Execute'/>
+			<output message='wsdlns:XmlServer.ExecuteResponse'/>
+		</operation>
+
+	</portType>
+
+	<binding name='XmlServerSoapBinding' type='wsdlns:XmlServerSoapPort' >
+
+		<stk:binding preferredEncoding='UTF-8'/>
+		<soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http'/>
+
+		<operation name='Execute'>
+			<soap:operation soapAction='http://tempuri.org/RDCMSXMLServer/action/XmlServer.Execute'/>
+			<input>
+				<soap:body
+					use='encoded'
+					namespace='http://tempuri.org/RDCMSXMLServer/message/'
+					encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'
+					parts='sParamA sErrorA sResultInfoA'/>
+			</input>
+			<output>
+				<soap:body
+					use='encoded'
+					namespace='http://tempuri.org/RDCMSXMLServer/message/'
+					encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'
+					parts='Result sErrorA sResultInfoA'/>
+			</output>
+		</operation>
+
+	</binding>
+
+	<service name='RDCMSXMLServer' >
+		<port name='XmlServerSoapPort' binding='wsdlns:XmlServerSoapBinding' >
+			<soap:address location='http://example.com//webservice/RDCMSXMLServer.WSDL'/>
+		</port>
+	</service>
+
+</definitions>
