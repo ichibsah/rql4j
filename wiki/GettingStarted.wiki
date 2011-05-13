@@ -1,0 +1,24 @@
+#summary Short introduction to the rql4j lib.
+
+= Introduction to the rql4j API=
+
+Here will find a short howto use the rql4j api. For more examples take a look into the *Test Classes*.
+
+
+= Short Howto =
+== Initialisation ==
+{{{
+CmsServer server = new CmsServer("http://your-otms/cms/webservice/rdcmsxmlserver.wsdl");
+RemoteCallWorker worker = new RemoteCallWorker(server);
+RqlCommand command = new RqlCommand(worker);
+}}}
+=== Logon to the Server ===
+{{{
+AdministrationBuilder loginBuilder = new AdministrationBuilder.Login("your-user", "your-password").build();
+}}}
+=== Logon to a Project ===
+{{{
+String loginGuid = command.getResult(loginBuilder).getLogin().getGuid();
+AdministrationBuilder validateBuilder = new AdministrationBuilder.Validate("your-project-guid").build();
+command.getResult(validateBuilder);
+}}}
