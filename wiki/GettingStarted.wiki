@@ -15,10 +15,10 @@ RqlCommand command = new RqlCommand(worker);
 === Logon to the Server ===
 {{{
 AdministrationBuilder loginBuilder = new AdministrationBuilder.Login("your-user", "your-password").build();
+String loginGuid = command.getResult(loginBuilder).getLogin().getGuid();
 }}}
 === Logon to a Project ===
 {{{
-String loginGuid = command.getResult(loginBuilder).getLogin().getGuid();
 AdministrationBuilder validateBuilder = new AdministrationBuilder.Validate("your-project-guid").build();
 command.getResult(validateBuilder);
 }}}
