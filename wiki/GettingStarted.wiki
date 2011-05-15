@@ -1,4 +1,5 @@
 #summary Short introduction to the rql4j lib.
+#labels Featured
 
 = Introduction to the rql4j API=
 
