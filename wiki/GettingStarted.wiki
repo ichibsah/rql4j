@@ -3,7 +3,7 @@
 
 = Introduction to the rql4j API=
 
-Here will find a short howto use the rql4j api. For more examples take a look into the *Test Classes*.
+Here will find a short howto use the rql4j api. For more examples take a look into the [http://code.google.com/p/rql4j/source/browse/#svn%2Ftrunk%2Fsrc%2Ftest%2Fjava%2Frql4j%2Fbuilder Test Classes].
 
 
 = Short HowTo =
