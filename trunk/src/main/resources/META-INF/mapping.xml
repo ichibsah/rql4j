@@ -193,6 +193,9 @@
         <field name="eltEditorOptions" type="java.lang.String">
             <bind-xml name="elteditoroptions" node="attribute"/>
         </field>
+        <field name="text" type="java.lang.String">
+            <bind-xml node="text"/>
+        </field>
     </class>
 
     <class name="rql4j.domain.Page">
@@ -308,6 +311,9 @@
         <field name="user" type="rql4j.domain.User">
             <bind-xml name="USER"/>
         </field>
+        <field name="modules" type="rql4j.domain.Modules">
+            <bind-xml name="MODULES"/>
+        </field>
     </class>
 
     <class name="rql4j.domain.Categories">
@@ -346,6 +352,15 @@
         </field>
         <field name="keyword" type="rql4j.domain.Keyword">
             <bind-xml name="KEYWORD"/>
+        </field>
+        <field name="keywords" type="rql4j.domain.Keywords">
+            <bind-xml name="KEYWORDS"/>
+        </field>
+    </class>
+
+    <class name="rql4j.domain.CcsConnections">
+        <field name="ccsConnectionList" type="rql4j.domain.CcsConnection" collection="collection">
+            <bind-xml name="CCSCONNECTION"/>
         </field>
     </class>
 
@@ -397,6 +412,15 @@
         </field>
     </class>
 
+    <class name="rql4j.domain.Dialog">
+        <field name="action" type="java.lang.String">
+            <bind-xml name="action" node="attribute"/>
+        </field>
+        <field name="orderBy" type="java.lang.String" handler="rql4j.domain.handler.DialogOrderByHandler">
+            <bind-xml name="orderby" node="attribute"/>
+        </field>
+    </class>
+
     <class name="rql4j.domain.Elements">
         <field name="action" type="string">
             <bind-xml name="action" node="attribute"/>
@@ -425,6 +449,18 @@
         </field>
         <field name="parentTable" type="java.lang.String">
             <bind-xml name="parenttable" node="attribute"/>
+        </field>
+    </class>
+
+    <class name="rql4j.domain.Language">
+        <field name="action" type="java.lang.String">
+            <bind-xml name="action" node="attribute"/>
+        </field>
+    </class>
+
+    <class name="rql4j.domain.Languages">
+        <field name="listList" type="rql4j.domain.List" collection="collection">
+            <bind-xml name="LIST"/>
         </field>
     </class>
 
@@ -492,7 +528,8 @@
         <field name="formularOrderId" type="java.lang.String">
             <bind-xml name="formularorderid" node="attribute"/>
         </field>
-        <field name="hasTargetContainerReferences" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+        <field name="hasTargetContainerReferences" type="java.lang.String"
+               handler="rql4j.domain.handler.BooleanHandler">
             <bind-xml name="hastargetcontainerreferences" node="attribute"/>
         </field>
         <field name="isLink" type="java.lang.String" handler="rql4j.domain.handler.LinkIsLinkHandler">
@@ -537,7 +574,8 @@
         <field name="templateElementGuid" type="java.lang.String">
             <bind-xml name="templateelementguid" node="attribute"/>
         </field>
-        <field name="templateElementIsLink" type="java.lang.String" handler="rql4j.domain.handler.LinkTemplateElementIsLinkHandler">
+        <field name="templateElementIsLink" type="java.lang.String"
+               handler="rql4j.domain.handler.LinkTemplateElementIsLinkHandler">
             <bind-xml name="templateelementislink" node="attribute"/>
         </field>
         <field name="type" type="java.lang.String">
@@ -593,6 +631,27 @@
         </field>
     </class>
 
+    <class name="rql4j.domain.List">
+        <field name="id" type="java.lang.String">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+        <field name="country" type="java.lang.String">
+            <bind-xml name="country" node="attribute"/>
+        </field>
+        <field name="language" type="java.lang.String">
+            <bind-xml name="language" node="attribute"/>
+        </field>
+        <field name="standardLanguage" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="standardlanguage" node="attribute"/>
+        </field>
+        <field name="lcid" type="java.lang.Integer">
+            <bind-xml name="lcid" node="attribute"/>
+        </field>
+        <field name="rfcLanguageId" type="java.lang.String">
+            <bind-xml name="rfclanguageid" node="attribute"/>
+        </field>
+    </class>
+
     <class name="rql4j.domain.Login">
         <field name="guid" type="string">
             <bind-xml name="guid" node="attribute"/>
@@ -610,7 +669,55 @@
         </field>
     </class>
 
+    <class name="rql4j.domain.Modules">
+        <field name="action" type="java.lang.String">
+            <bind-xml name="action" node="attribute"/>
+        </field>
+        <field name="userGuid" type="java.lang.String">
+            <bind-xml name="userguid" node="attribute"/>
+        </field>
+        <field name="countLicense" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="countlicense" node="attribute"/>
+        </field>
+        <field name="moduleList" type="rql4j.domain.Module" collection="collection">
+            <bind-xml name="MODULE"/>
+        </field>
+    </class>
+
+    <class name="rql4j.domain.Module">
+        <field name="guid" type="java.lang.String">
+            <bind-xml name="guid" node="attribute"/>
+        </field>
+        <field name="checked" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="checked" node="attribute"/>
+        </field>
+        <field name="project" type="java.lang.String">
+            <bind-xml name="project" node="attribute"/>
+        </field>
+        <field name="projectName" type="java.lang.String">
+            <bind-xml name="projectname" node="attribute"/>
+        </field>
+        <field name="id" type="java.lang.String">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+        <field name="lastId" type="java.lang.String">
+            <bind-xml name="lastid" node="attribute"/>
+        </field>
+        <field name="lastGuid" type="java.lang.String">
+            <bind-xml name="lastguid" node="attribute"/>
+        </field>
+        <field name="last" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="last" node="attribute"/>
+        </field>
+        <field name="modules" type="rql4j.domain.Modules">
+            <bind-xml name="MODULES"/>
+        </field>
+    </class>
+
     <class name="rql4j.domain.User">
+        <field name="action" type="java.lang.String">
+            <bind-xml name="action" node="attribute"/>
+        </field>
         <field name="country" type="java.lang.String">
             <bind-xml name="country" node="attribute"/>
         </field>
@@ -619,6 +726,12 @@
         </field>
         <field name="dialogLcid" type="java.lang.String">
             <bind-xml name="dialoglcid" node="attribute"/>
+        </field>
+        <field name="email" type="java.lang.String">
+            <bind-xml name="email" node="attribute"/>
+        </field>
+        <field name="fullName" type="java.lang.String">
+            <bind-xml name="fullname" node="attribute"/>
         </field>
         <field name="flags1" type="java.lang.String">
             <bind-xml name="flags1" node="attribute"/>
@@ -659,8 +772,20 @@
         <field name="maxLevel" type="java.lang.String">
             <bind-xml name="maxlevel" node="attribute"/>
         </field>
+        <field name="maxLogin" type="java.lang.Integer">
+            <bind-xml name="maxlogin" node="attribute"/>
+        </field>
+        <field name="name" type="java.lang.String">
+            <bind-xml name="name" node="attribute"/>
+        </field>
+        <field name="preferredEditor" type="java.lang.String" handler="rql4j.domain.handler.UserPreferredEditorHandler">
+            <bind-xml name="preferrededitor" node="attribute"/>
+        </field>
         <field name="projectGuid" type="java.lang.String">
             <bind-xml name="projectguid" node="attribute"/>
+        </field>
+        <field name="pw" type="java.lang.String">
+            <bind-xml name="pw" node="attribute"/>
         </field>
         <field name="rights1" type="java.lang.String">
             <bind-xml name="rights1" node="attribute"/>
@@ -686,11 +811,35 @@
         <field name="userId" type="java.lang.String">
             <bind-xml name="userid" node="attribute"/>
         </field>
+        <field name="userLanguage" type="java.lang.String">
+            <bind-xml name="userlanguage" node="attribute"/>
+        </field>
         <field name="server" type="rql4j.domain.Server">
             <bind-xml name="server" node="attribute"/>
         </field>
         <field name="clipboardData" type="rql4j.domain.ClipboardData">
             <bind-xml name="CLIPBOARDDATA"/>
+        </field>
+        <field name="description" type="java.lang.String">
+            <bind-xml name="description" node="attribute"/>
+        </field>
+        <field name="disabled" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="disabled" node="attribute"/>
+        </field>
+        <field name="invertDirectEdit" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="invertdirectedit" node="attribute"/>
+        </field>
+        <field name="modules" type="rql4j.domain.Modules">
+            <bind-xml name="MODULES"/>
+        </field>
+        <field name="lastModules" type="rql4j.domain.LastModules">
+            <bind-xml name="LASTMODULES"/>
+        </field>
+        <field name="ccsConnections" type="rql4j.domain.CcsConnections">
+            <bind-xml name="CCSCONNECTIONS"/>
+        </field>
+        <field name="projects" type="rql4j.domain.Projects">
+            <bind-xml name="PROJECTS"/>
         </field>
     </class>
 
@@ -733,7 +882,7 @@
 
 
     <class name="rql4j.domain.Server">
-        <field name="key" type="string">
+        <field name="key" type="java.lang.String">
             <bind-xml name="key" node="attribute"/>
         </field>
     </class>
@@ -972,6 +1121,9 @@
         <field name="templateVariant" type="rql4j.domain.TemplateVariant">
             <bind-xml name="TEMPLATEVARIANT"/>
         </field>
+        <field name="withStyleSheets" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="withstylesheets" node="attribute"/>
+        </field>
     </class>
 
     <class name="rql4j.domain.Project">
@@ -983,6 +1135,9 @@
         </field>
         <field name="sessionKey" type="java.lang.String">
             <bind-xml name="sessionkey" node="attribute"/>
+        </field>
+        <field name="userLevel" type="java.lang.String" handler="rql4j.domain.handler.ProjectUserLevelHandler">
+            <bind-xml name="userlevel" node="attribute"/>
         </field>
         <field name="name" type="java.lang.String">
             <bind-xml name="name" node="attribute"/>
@@ -1037,6 +1192,15 @@
         </field>
         <field name="sharedFolder" type="rql4j.domain.SharedFolder">
             <bind-xml name="SHAREDFOLDER"/>
+        </field>
+        <field name="lm" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="lm" node="attribute"/>
+        </field>
+        <field name="te" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="te" node="attribute"/>
+        </field>
+        <field name="checked" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="checked" node="attribute"/>
         </field>
     </class>
 
@@ -1313,6 +1477,9 @@
         <field name="server" type="rql4j.domain.Server">
             <bind-xml name="SERVER"/>
         </field>
+        <field name="language" type="rql4j.domain.Language">
+            <bind-xml name="LANGUAGE"/>
+        </field>
         <field name="license" type="rql4j.domain.License">
             <bind-xml name="LICENSE"/>
         </field>
@@ -1388,8 +1555,20 @@
         <field name="linksFrom" type="rql4j.domain.LinksFrom">
             <bind-xml name="LINKSFROM"/>
         </field>
+        <field name="languages" type="rql4j.domain.Languages">
+            <bind-xml name="LANGUAGES"/>
+        </field>
         <field name="workflow" type="rql4j.domain.Workflow">
             <bind-xml name="WORKFLOW"/>
+        </field>
+        <field name="dialog" type="rql4j.domain.Dialog">
+            <bind-xml name="DIALOG"/>
+        </field>
+        <field name="keywords" type="rql4j.domain.Keywords">
+            <bind-xml name="KEYWORDS"/>
+        </field>
+        <field name="modules" type="rql4j.domain.Modules">
+            <bind-xml name="MODULES"/>
         </field>
     </class>
 
@@ -1429,6 +1608,15 @@
         </field>
     </class>
 
+    <class name="rql4j.domain.Keywords">
+        <field name="action" type="java.lang.String">
+            <bind-xml name="action" node="attribute"/>
+        </field>
+        <field name="keywordList" type="rql4j.domain.Keyword" collection="collection">
+            <bind-xml name="KEYWORD"/>
+        </field>
+    </class>
+
     <class name="rql4j.domain.Languagevariant">
         <field name="guid" type="java.lang.String">
             <bind-xml name="guid" node="attribute"/>
@@ -1465,6 +1653,12 @@
         </field>
         <field name="languagevariantList" type="rql4j.domain.Languagevariant" collection="collection">
             <bind-xml name="LANGUAGEVARIANT"/>
+        </field>
+    </class>
+
+    <class name="rql4j.domain.LastModules">
+        <field name="moduleList" type="rql4j.domain.Module" collection="collection">
+            <bind-xml name="MODULE"/>
         </field>
     </class>
 

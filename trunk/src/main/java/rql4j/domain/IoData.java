@@ -55,6 +55,11 @@ public class IoData {
     private SharedFolder sharedFolder;
     private LinksFrom linksFrom;
     private Workflow workflow;
+    private Language language;
+    private Languages languages;
+    private Dialog dialog;
+    private Keywords keywords;
+    private Modules modules;
 
     public IoData() {
     }
@@ -364,6 +369,46 @@ public class IoData {
         this.workflow = workflow;
     }
 
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
+    public Languages getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(Languages languages) {
+        this.languages = languages;
+    }
+
+    public Dialog getDialog() {
+        return dialog;
+    }
+
+    public void setDialog(Dialog dialog) {
+        this.dialog = dialog;
+    }
+
+    public Keywords getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(Keywords keywords) {
+        this.keywords = keywords;
+    }
+
+    public Modules getModules() {
+        return modules;
+    }
+
+    public void setModules(Modules modules) {
+        this.modules = modules;
+    }
+
     @Override
     public String toString() {
         return "IoData{" +
@@ -405,6 +450,11 @@ public class IoData {
                 ", sharedFolder=" + sharedFolder +
                 ", linksFrom=" + linksFrom +
                 ", workflow=" + workflow +
+                ", language=" + language +
+                ", languages=" + languages +
+                ", dialog=" + dialog +
+                ", keywords=" + keywords +
+                ", modules=" + modules +
                 '}';
     }
 }

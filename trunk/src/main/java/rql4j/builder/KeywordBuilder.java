@@ -43,34 +43,30 @@ public class KeywordBuilder extends RqlBuilder {
     public static class AddNew implements IBuilder {
         private final IoData ioData;
         private final Project project;
-        private final List<Category> categoryList;
-        private final String action;
+        private final Category category;
+        private final String action = "addnew";
+        private final List<Keyword> keywordList;
 
-        public AddNew() {
+        public AddNew(String categoryGuid) {
             this.ioData = new IoData();
             this.project = new Project();
-            this.categoryList = new ArrayList<Category>();
-            this.action = "addnew";
+            this.category = new Category(categoryGuid);
+            this.keywordList = new ArrayList<Keyword>();
         }
 
-        public AddNew addKeywords(String categoryGuid, String[] keywordValues) {
-            Category category = new Category(categoryGuid);
-            List<Keyword> keywordList = new ArrayList<Keyword>();
-            for(String keywordValue: keywordValues) {
-                Keyword keyword = new Keyword();
-                keyword.setAction(this.action);
-                keyword.setValue(keywordValue);
-                keywordList.add(keyword);
-            }
-            category.setKeywordList(keywordList);
-            this.categoryList.add(category);
+        public AddNew Keyword(String keywordValue) {
+            Keyword keyword = new Keyword();
+            keyword.setValue(keywordValue);
+            keyword.setAction(this.action);
+            this.keywordList.add(keyword);
             return this;
         }
 
         @Override
         public KeywordBuilder build() {
             this.ioData.setProject(this.project);
-            this.project.setCategoryList(this.categoryList);
+            this.project.setCategory(this.category);
+            this.category.setKeywordList(this.keywordList);
             return new KeywordBuilder(this);
         }
     }

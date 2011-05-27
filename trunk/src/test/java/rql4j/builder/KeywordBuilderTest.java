@@ -33,7 +33,7 @@ public class KeywordBuilderTest extends TestCase {
     String keywordGuid;
 
     private static final String CATEGORY_VALUE = "Test Category";
-    private static final String[] KEYWORD_VALUES = {"Keyword 1", "Keyword 2"};
+    private static final String KEYWORD_VALUE = "Keyword 1";
 
     @Override
     protected void setUp() throws Exception {
@@ -51,8 +51,8 @@ public class KeywordBuilderTest extends TestCase {
         IoData ioData = command.getResult(categoryBuilder);
         Assert.assertEquals(CATEGORY_VALUE, ioData.getCategory().getValue());
         this.categoryGuid = ioData.getCategory().getGuid();
-        String[] test = {"Test"};
-        KeywordBuilder keywordBuilder = new KeywordBuilder.AddNew().addKeywords(this.categoryGuid, test).build();
+        String test = "Test";
+        KeywordBuilder keywordBuilder = new KeywordBuilder.AddNew(this.categoryGuid).Keyword(test).build();
         this.keywordGuid = command.getResult(keywordBuilder).getKeyword().getGuid();
     }
 
@@ -75,7 +75,7 @@ public class KeywordBuilderTest extends TestCase {
     }
 
     public void testKeywordBuilderAddNew() throws Exception {
-        KeywordBuilder keywordBuilder = new KeywordBuilder.AddNew().addKeywords(this.categoryGuid, KEYWORD_VALUES).build();
+        KeywordBuilder keywordBuilder = new KeywordBuilder.AddNew(this.categoryGuid).Keyword(KEYWORD_VALUE).build();
         IoData ioData = command.getResult(keywordBuilder);
         Assert.assertEquals(this.categoryGuid, ioData.getKeyword().getCategoryGuid());
     }

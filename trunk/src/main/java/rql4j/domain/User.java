@@ -15,11 +15,19 @@
 package rql4j.domain;
 
 public class User {
+
+    public enum PreferredEditor {
+        PROJECT_DEFAULT, REDDOT_EDITOR, MICROSOFT_WORD, EXTERNAL_EDITOR
+    }
+
+    private String action;
     private String country;
     private String dialogLanguageId;
     private String dialogLcid;
+    private String email;
     private String flags1;
     private String flags2;
+    private String fullName;
     private String guid;
     private String isServerManager;
     private String language;
@@ -31,7 +39,9 @@ public class User {
     private String lm;
     private String mainLanguageVariantId;
     private String maxLevel;
+    private Integer maxLogin;
     private String projectGuid;
+    private String pw;
     private String rights1;
     private String rights2;
     private String rights3;
@@ -40,8 +50,18 @@ public class User {
     private String rights6;
     private String te;
     private String userId;
+    private String userLanguage;
     private Server server;
     private ClipboardData clipboardData;
+    private String name;
+    private String description;
+    private boolean disabled;
+    private PreferredEditor preferredEditor;
+    private Boolean invertDirectEdit;
+    private Modules modules;
+    private LastModules lastModules;
+    private CcsConnections ccsConnections;
+    private Projects projects;
 
     public User() {
     }
@@ -50,8 +70,32 @@ public class User {
         this.guid = guid;
     }
 
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
     public String getCountry() {
         return country;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getLanguageKey() {
@@ -92,6 +136,14 @@ public class User {
 
     public void setMaxLevel(String maxLevel) {
         this.maxLevel = maxLevel;
+    }
+
+    public Integer getMaxLogin() {
+        return maxLogin;
+    }
+
+    public void setMaxLogin(Integer maxLogin) {
+        this.maxLogin = maxLogin;
     }
 
     public String getProjectGuid() {
@@ -194,6 +246,14 @@ public class User {
         this.lm = lm;
     }
 
+    public String getPw() {
+        return pw;
+    }
+
+    public void setPw(String pw) {
+        this.pw = pw;
+    }
+
     public String getRights1() {
         return rights1;
     }
@@ -266,14 +326,97 @@ public class User {
         this.clipboardData = clipboardData;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUserLanguage() {
+        return userLanguage;
+    }
+
+    public void setUserLanguage(String userLanguage) {
+        this.userLanguage = userLanguage;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
+    }
+
+    public PreferredEditor getPreferredEditor() {
+        return preferredEditor;
+    }
+
+    public void setPreferredEditor(PreferredEditor preferredEditor) {
+        this.preferredEditor = preferredEditor;
+    }
+
+    public Boolean getInvertDirectEdit() {
+        return invertDirectEdit;
+    }
+
+    public void setInvertDirectEdit(Boolean invertDirectEdit) {
+        this.invertDirectEdit = invertDirectEdit;
+    }
+
+    public Modules getModules() {
+        return modules;
+    }
+
+    public void setModules(Modules modules) {
+        this.modules = modules;
+    }
+
+    public LastModules getLastModules() {
+        return lastModules;
+    }
+
+    public void setLastModules(LastModules lastModules) {
+        this.lastModules = lastModules;
+    }
+
+    public CcsConnections getCcsConnections() {
+        return ccsConnections;
+    }
+
+    public void setCcsConnections(CcsConnections ccsConnections) {
+        this.ccsConnections = ccsConnections;
+    }
+
+    public Projects getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Projects projects) {
+        this.projects = projects;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "country='" + country + '\'' +
+                "action='" + action + '\'' +
+                ", country='" + country + '\'' +
                 ", dialogLanguageId='" + dialogLanguageId + '\'' +
                 ", dialogLcid='" + dialogLcid + '\'' +
+                ", email='" + email + '\'' +
                 ", flags1='" + flags1 + '\'' +
                 ", flags2='" + flags2 + '\'' +
+                ", fullName='" + fullName + '\'' +
                 ", guid='" + guid + '\'' +
                 ", isServerManager='" + isServerManager + '\'' +
                 ", language='" + language + '\'' +
@@ -285,7 +428,9 @@ public class User {
                 ", lm='" + lm + '\'' +
                 ", mainLanguageVariantId='" + mainLanguageVariantId + '\'' +
                 ", maxLevel='" + maxLevel + '\'' +
+                ", maxLogin=" + maxLogin +
                 ", projectGuid='" + projectGuid + '\'' +
+                ", pw='" + pw + '\'' +
                 ", rights1='" + rights1 + '\'' +
                 ", rights2='" + rights2 + '\'' +
                 ", rights3='" + rights3 + '\'' +
@@ -294,8 +439,18 @@ public class User {
                 ", rights6='" + rights6 + '\'' +
                 ", te='" + te + '\'' +
                 ", userId='" + userId + '\'' +
+                ", userLanguage='" + userLanguage + '\'' +
                 ", server=" + server +
                 ", clipboardData=" + clipboardData +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", disabled=" + disabled +
+                ", preferredEditor=" + preferredEditor +
+                ", invertDirectEdit=" + invertDirectEdit +
+                ", modules=" + modules +
+                ", lastModules=" + lastModules +
+                ", ccsConnections=" + ccsConnections +
+                ", projects=" + projects +
                 '}';
     }
 }

@@ -37,4 +37,13 @@ public class IoCategories extends IoObject {
         }
         return null;
     }
+
+    public List<Category> getCategoryList() {
+        if (this.ioData != null &&
+                this.ioData.getCategories() != null &&
+                this.ioData.getCategories().getCategoryList() != null) {
+            return this.ioData.getCategories().getCategoryList();
+        }
+        return null;
+    }
 }

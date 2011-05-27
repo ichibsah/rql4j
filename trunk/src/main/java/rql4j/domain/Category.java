@@ -26,6 +26,7 @@ public class Category {
     private String password;
     private List<Keyword> keywordList;
     private Keyword keyword;
+    private Keywords keywords;
 
     public Category() {
     }
@@ -106,6 +107,14 @@ public class Category {
         this.keyword = keyword;
     }
 
+    public Keywords getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(Keywords keywords) {
+        this.keywords = keywords;
+    }
+
     @Override
     public String toString() {
         return "Category{" +
@@ -118,6 +127,7 @@ public class Category {
                 ", password='" + password + '\'' +
                 ", keywordList=" + keywordList +
                 ", keyword=" + keyword +
+                ", keywords=" + keywords +
                 '}';
     }
 }

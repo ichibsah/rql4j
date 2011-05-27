@@ -24,6 +24,7 @@ public class Administration {
     private Projects projects;
     private Logout logout;
     private User user;
+    private Modules modules;
 
     public Administration() {
     }
@@ -105,18 +106,28 @@ public class Administration {
         this.user = user;
     }
 
+    public Modules getModules() {
+        return modules;
+    }
+
+    public void setModules(Modules modules) {
+        this.modules = modules;
+    }
+
+
     @Override
     public String toString() {
         return "Administration{" +
-                "name='" + name + '\'' +
+                "action='" + action + '\'' +
+                ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
-                ", action='" + action + '\'' +
                 ", loginGuid='" + loginGuid + '\'' +
                 ", userAgent='" + userAgent + '\'' +
                 ", project=" + project +
                 ", projects=" + projects +
                 ", logout=" + logout +
                 ", user=" + user +
+                ", modules=" + modules +
                 '}';
     }
 }

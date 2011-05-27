@@ -84,6 +84,7 @@ public class Element {
     private String languageVariantGuid;
     private String dialogLanguageGuid;
     private String eltDefaultValue;
+    private String text;
 
     public String getEltDefaultValue() {
         return eltDefaultValue;
@@ -557,6 +558,14 @@ public class Element {
         this.languageVariantGuid = languageVariantGuid;
     }
 
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
     @Override
     public String toString() {
         return "Element{" +
@@ -618,6 +627,7 @@ public class Element {
                 ", languageVariantGuid='" + languageVariantGuid + '\'' +
                 ", dialogLanguageGuid='" + dialogLanguageGuid + '\'' +
                 ", eltDefaultValue='" + eltDefaultValue + '\'' +
+                ", text='" + text + '\'' +
                 '}';
     }
 }
