@@ -14,7 +14,7 @@
 
 package rql4j.domain;
 
-import java.util.*;
+import java.util.List;
 
 public class Elements {
     private String action;

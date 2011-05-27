@@ -14,6 +14,8 @@
 
 package rql4j.domain;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.util.List;
 
 public class Project {
@@ -33,6 +35,10 @@ public class Project {
      */
     public enum InhibitLevel {
         Unrestricted_release,  
+    }
+
+    public enum UserLevel {
+        ADMINISTRATOR, SITE_BUILDER, EDITOR, AUTHOR, VISITOR
     }
 
 
@@ -58,6 +64,11 @@ public class Project {
     private Keyword keyword;
     private String lockInfo;
     private SharedFolder sharedFolder;
+    private UserLevel userLevel;
+    private Boolean te;
+    private Boolean lm;
+    private Boolean checked;
+
 
     public Project() {
     }
@@ -242,6 +253,38 @@ public class Project {
         this.sharedFolder = sharedFolder;
     }
 
+    public UserLevel getUserLevel() {
+        return userLevel;
+    }
+
+    public void setUserLevel(UserLevel userLevel) {
+        this.userLevel = userLevel;
+    }
+
+    public Boolean getTe() {
+        return te;
+    }
+
+    public void setTe(Boolean te) {
+        this.te = te;
+    }
+
+    public Boolean getLm() {
+        return lm;
+    }
+
+    public void setLm(Boolean lm) {
+        this.lm = lm;
+    }
+
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
+
     @Override
     public String toString() {
         return "Project{" +
@@ -267,6 +310,10 @@ public class Project {
                 ", keyword=" + keyword +
                 ", lockInfo='" + lockInfo + '\'' +
                 ", sharedFolder=" + sharedFolder +
+                ", userLevel=" + userLevel +
+                ", te=" + te +
+                ", lm=" + lm +
+                ", checked=" + checked +
                 '}';
     }
 }

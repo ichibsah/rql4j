@@ -14,10 +14,10 @@
 
 package rql4j.cms;
 
+import org.apache.log4j.Logger;
+import rql4j.builder.*;
 import rql4j.domain.IoData;
 import rql4j.iodata.*;
-import rql4j.builder.*;
-import org.apache.log4j.Logger;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -102,6 +102,15 @@ public class RqlCommand {
     public IoCategories getResult(CategoriesBuilder categoriesBuilder) {
         return new IoCategories(checkExecuted(categoriesBuilder));
     }
+
+    public IoKeywords getResult(KeywordsBuilder keywordsBuilder) {
+        return new IoKeywords(checkExecuted(keywordsBuilder));
+    }
+
+    public IoTemplateVariants getResult(TemplateVariantsBuilder templateVariantsBuilder) {
+        return new IoTemplateVariants(checkExecuted(templateVariantsBuilder));
+    }
+
 
     public IoData getResult(RqlBuilder rqlBuilder) {
         return checkExecuted(rqlBuilder);

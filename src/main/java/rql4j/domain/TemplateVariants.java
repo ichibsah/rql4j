@@ -32,6 +32,7 @@ public class TemplateVariants {
     private Boolean waitForRelease;
     private List<TemplateVariant> templateVariantList;
     private TemplateVariant templateVariant;
+    private Boolean withStyleSheets;
 
     public TemplateVariants() {
     }
@@ -148,6 +149,14 @@ public class TemplateVariants {
         this.templateVariant = templateVariant;
     }
 
+    public Boolean getWithStyleSheets() {
+        return withStyleSheets;
+    }
+
+    public void setWithStyleSheets(Boolean withStyleSheets) {
+        this.withStyleSheets = withStyleSheets;
+    }
+
     @Override
     public String toString() {
         return "TemplateVariants{" +
@@ -165,6 +174,7 @@ public class TemplateVariants {
                 ", waitForRelease=" + waitForRelease +
                 ", templateVariantList=" + templateVariantList +
                 ", templateVariant=" + templateVariant +
+                ", withStyleSheets=" + withStyleSheets +
                 '}';
     }
 }
