@@ -33,7 +33,7 @@ public class BooleanHandler extends GeneralizedFieldHandler {
     @Override
     public Object convertUponSet(Object o) {
         Boolean value = null;
-        Integer integer = Integer.getInteger((String)o);
+        Integer integer = Integer.parseInt((String)o);
         if(integer != null && integer == 1)
             value = true;
         else if (integer != null && integer == 0)
