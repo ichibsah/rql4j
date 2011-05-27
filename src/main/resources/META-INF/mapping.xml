@@ -468,6 +468,9 @@
         <field name="guid" type="java.lang.String">
             <bind-xml name="guid" node="attribute"/>
         </field>
+        <field name="isMainLink" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="ismainlink" node="attribute"/>
+        </field>
         <field name="action" type="java.lang.String">
             <bind-xml name="action" node="attribute"/>
         </field>
@@ -534,9 +537,6 @@
         </field>
         <field name="isLink" type="java.lang.String" handler="rql4j.domain.handler.LinkIsLinkHandler">
             <bind-xml name="islink" node="attribute"/>
-        </field>
-        <field name="isMainLink" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
-            <bind-xml name="ismainlink" node="attribute"/>
         </field>
         <field name="isSitemapLink" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
             <bind-xml name="issitemaplink" node="attribute"/>
