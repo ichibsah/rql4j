@@ -284,6 +284,30 @@ public class Link {
         isMainLink = mainLink;
     }
 
+    public LinkType getLink() {
+        return isLink;
+    }
+
+    public void setLink(LinkType link) {
+        isLink = link;
+    }
+
+    public Boolean getSitemapLink() {
+        return isSitemapLink;
+    }
+
+    public void setSitemapLink(Boolean sitemapLink) {
+        isSitemapLink = sitemapLink;
+    }
+
+    public Boolean getTargetContainer() {
+        return isTargetContainer;
+    }
+
+    public void setTargetContainer(Boolean targetContainer) {
+        isTargetContainer = targetContainer;
+    }
+
     public Boolean getIsSitemapLink() {
         return isSitemapLink;
     }
@@ -423,8 +447,8 @@ public class Link {
     @Override
     public String toString() {
         return "Link{" +
-                "guid='" + guid + '\'' +
-                ", action='" + action + '\'' +
+                "action='" + action + '\'' +
+                ", guid='" + guid + '\'' +
                 ", page=" + page +
                 ", name='" + name + '\'' +
                 ", pages=" + pages +
