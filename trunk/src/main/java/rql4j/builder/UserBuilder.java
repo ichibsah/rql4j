@@ -25,6 +25,74 @@ public class UserBuilder extends RqlBuilder {
         super(addNew.ioData);
     }
 
+    private UserBuilder(Delete delete) {
+        super(delete.ioData);
+    }
+
+    private UserBuilder(Load load) {
+        super(load.ioData);
+    }
+
+    /**
+     * Delete a user from the system
+     */
+    public static class Delete implements IBuilder {
+        private final IoData ioData;
+        private final Administration administration;
+        private final User user;
+        private final String action = "delete";
+
+        /**
+         * Constructor to create a new Delete instance
+         * @param userGuid guid of the user
+         */
+        public Delete(String userGuid) {
+            this.ioData = new IoData();
+            this.administration = new Administration();
+            this.user = new User(userGuid);
+            this.user.setAction(this.action);
+        }
+
+        /**
+         * Build the final RQL-Statement
+         * @return return new UserBuilder instance
+         */
+        public UserBuilder build() {
+            this.ioData.setAdministration(this.administration);
+            this.administration.setUser(this.user);
+            return new UserBuilder(this);
+        }
+    }
+
+    /**
+     * Display user data of an existing user
+     */
+    public static class Load implements IBuilder{
+
+        private final IoData ioData;
+        private final Administration administration;
+        private final User user;
+        private final String action = "load";
+
+        /**
+         * Constructor to create new Load instance
+         * @param userGuid guid of the user
+         */
+        public Load(String userGuid) {
+            this.ioData = new IoData();
+            this.administration = new Administration();
+            this.user = new User(userGuid);
+            this.user.setAction(this.action);
+        }
+
+        @Override
+        public UserBuilder build() {
+            this.ioData.setAdministration(this.administration);
+            this.administration.setUser(this.user);
+            return new UserBuilder(this);
+        }
+    }
+
     /**
      * create a new user
      */
