@@ -62,6 +62,15 @@ public class User {
     private LastModules lastModules;
     private CcsConnections ccsConnections;
     private Projects projects;
+    // new
+    private String accountsystemguid;
+    private String acs;
+    private Boolean disablePassword;
+    private String id;
+    
+    
+    
+    
 
     public User() {
     }
