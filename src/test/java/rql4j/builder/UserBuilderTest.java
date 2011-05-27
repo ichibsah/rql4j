@@ -83,4 +83,9 @@ public class UserBuilderTest extends TestCase {
         UserBuilder userBuilder = addNewUserBuilder.build();
         command.getResult(userBuilder);
     }
+
+    public void testUserBuilderDelete() throws Exception {
+        UserBuilder userBuilder = new UserBuilder.Delete(properties.getProperty("cms.test.user.delete.guid")).build();
+        command.getResult(userBuilder);
+    }
 }

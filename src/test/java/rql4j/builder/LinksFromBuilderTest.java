@@ -20,7 +20,9 @@ import rql4j.cms.RqlCommand;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import rql4j.domain.Link;
 
+import java.util.List;
 import java.util.Properties;
 
 public class LinksFromBuilderTest extends TestCase {
@@ -61,6 +63,9 @@ public class LinksFromBuilderTest extends TestCase {
 
     public void testLinksFromBuilderLoad() throws Exception {
         LinksFromBuilder linksFromBuilder = new LinksFromBuilder.Load(properties.getProperty("cms.test.page.guid")).build();
-        command.getResult(linksFromBuilder);
+        List<Link> linkList = command.getResult(linksFromBuilder).getLinksFrom().getLinkList();
+        for(Link link: linkList) {
+            System.out.println(link.getName());
+        }
     }
 }
