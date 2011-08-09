@@ -27,7 +27,7 @@ import java.util.concurrent.ConcurrentMap;
 public class RqlCommand {
     Queue<RqlBuilder> commands;
     ConcurrentMap<RqlBuilder, IoData> resultMap;
-    IoData result;
+    IoData result = null;
     RemoteCallWorker worker;
     private final Logger logger;
 

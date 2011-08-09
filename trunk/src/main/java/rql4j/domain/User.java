@@ -55,7 +55,7 @@ public class User {
     private ClipboardData clipboardData;
     private String name;
     private String description;
-    private boolean disabled;
+    private Boolean disabled;
     private PreferredEditor preferredEditor;
     private Boolean invertDirectEdit;
     private Modules modules;
@@ -63,10 +63,11 @@ public class User {
     private CcsConnections ccsConnections;
     private Projects projects;
     // new
-    private String accountsystemguid;
+    private String accountSystemGuid;
     private String acs;
     private Boolean disablePassword;
     private String id;
+    private Groups groups;
     
     
     
@@ -161,6 +162,14 @@ public class User {
 
     public void setProjectGuid(String projectGuid) {
         this.projectGuid = projectGuid;
+    }
+
+    public Boolean getDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
     }
 
     public String getUserId() {
@@ -359,13 +368,7 @@ public class User {
         this.description = description;
     }
 
-    public boolean isDisabled() {
-        return disabled;
-    }
 
-    public void setDisabled(boolean disabled) {
-        this.disabled = disabled;
-    }
 
     public PreferredEditor getPreferredEditor() {
         return preferredEditor;
@@ -415,10 +418,51 @@ public class User {
         this.projects = projects;
     }
 
+    public String getAccountSystemGuid() {
+        return accountSystemGuid;
+    }
+
+    public void setAccountSystemGuid(String accountSystemGuid) {
+        this.accountSystemGuid = accountSystemGuid;
+    }
+
+    public String getAcs() {
+        return acs;
+    }
+
+    public void setAcs(String acs) {
+        this.acs = acs;
+    }
+
+    public Boolean getDisablePassword() {
+        return disablePassword;
+    }
+
+    public void setDisablePassword(Boolean disablePassword) {
+        this.disablePassword = disablePassword;
+    }
+
+    public Groups getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Groups groups) {
+        this.groups = groups;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "action='" + action + '\'' +
+                "accountSystemGuid='" + accountSystemGuid + '\'' +
+                ", action='" + action + '\'' +
                 ", country='" + country + '\'' +
                 ", dialogLanguageId='" + dialogLanguageId + '\'' +
                 ", dialogLcid='" + dialogLcid + '\'' +
@@ -460,6 +504,10 @@ public class User {
                 ", lastModules=" + lastModules +
                 ", ccsConnections=" + ccsConnections +
                 ", projects=" + projects +
+                ", acs='" + acs + '\'' +
+                ", disablePassword=" + disablePassword +
+                ", id='" + id + '\'' +
+                ", groups=" + groups +
                 '}';
     }
 }

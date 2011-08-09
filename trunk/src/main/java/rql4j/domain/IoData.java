@@ -60,6 +60,7 @@ public class IoData {
     private Dialog dialog;
     private Keywords keywords;
     private Modules modules;
+	private PBCache pbCache;
 
     public IoData() {
     }
@@ -409,52 +410,61 @@ public class IoData {
         this.modules = modules;
     }
 
-    @Override
-    public String toString() {
-        return "IoData{" +
-                "loginGuid='" + loginGuid + '\'' +
-                ", sessionKey='" + sessionKey + '\'' +
-                ", result='" + result + '\'' +
-                ", page=" + page +
-                ", pageList=" + pageList +
-                ", login=" + login +
-                ", administration=" + administration +
-                ", project=" + project +
-                ", projects=" + projects +
-                ", user=" + user +
-                ", server=" + server +
-                ", license=" + license +
-                ", link=" + link +
-                ", elements=" + elements +
-                ", media=" + media +
-                ", fileList=" + fileList +
-                ", folder=" + folder +
-                ", template=" + template +
-                ", accountSystem=" + accountSystem +
-                ", files=" + files +
-                ", pages=" + pages +
-                ", exportJob=" + exportJob +
-                ", languageVariants=" + languageVariants +
-                ", projectVariants=" + projectVariants +
-                ", folders=" + folders +
-                ", templates=" + templates +
-                ", exportJobs=" + exportJobs +
-                ", export=" + export +
-                ", category=" + category +
-                ", categories=" + categories +
-                ", keyword=" + keyword +
-                ", elementList=" + elementList +
-                ", clipboardData=" + clipboardData +
-                ", clipboard=" + clipboard +
-                ", ioDataList=" + ioDataList +
-                ", sharedFolder=" + sharedFolder +
-                ", linksFrom=" + linksFrom +
-                ", workflow=" + workflow +
-                ", language=" + language +
-                ", languages=" + languages +
-                ", dialog=" + dialog +
-                ", keywords=" + keywords +
-                ", modules=" + modules +
-                '}';
-    }
+	public PBCache getPbCache() {
+		return pbCache;
+	}
+
+	public void setPbCache(PBCache pbCache) {
+		this.pbCache = pbCache;
+	}
+
+	@Override
+	public String toString() {
+		return "IoData{" +
+				"accountSystem=" + accountSystem +
+				", loginGuid='" + loginGuid + '\'' +
+				", sessionKey='" + sessionKey + '\'' +
+				", result='" + result + '\'' +
+				", page=" + page +
+				", pageList=" + pageList +
+				", login=" + login +
+				", administration=" + administration +
+				", project=" + project +
+				", projects=" + projects +
+				", user=" + user +
+				", server=" + server +
+				", license=" + license +
+				", link=" + link +
+				", elements=" + elements +
+				", media=" + media +
+				", fileList=" + fileList +
+				", folder=" + folder +
+				", template=" + template +
+				", files=" + files +
+				", pages=" + pages +
+				", exportJob=" + exportJob +
+				", languageVariants=" + languageVariants +
+				", projectVariants=" + projectVariants +
+				", folders=" + folders +
+				", templates=" + templates +
+				", exportJobs=" + exportJobs +
+				", export=" + export +
+				", category=" + category +
+				", categories=" + categories +
+				", keyword=" + keyword +
+				", elementList=" + elementList +
+				", clipboardData=" + clipboardData +
+				", clipboard=" + clipboard +
+				", ioDataList=" + ioDataList +
+				", sharedFolder=" + sharedFolder +
+				", linksFrom=" + linksFrom +
+				", workflow=" + workflow +
+				", language=" + language +
+				", languages=" + languages +
+				", dialog=" + dialog +
+				", keywords=" + keywords +
+				", modules=" + modules +
+				", pbCache=" + pbCache +
+				'}';
+	}
 }

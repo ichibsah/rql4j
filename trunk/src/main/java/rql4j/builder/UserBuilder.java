@@ -33,6 +33,14 @@ public class UserBuilder extends RqlBuilder {
         super(load.ioData);
     }
 
+    private UserBuilder(SessionInfo sessionInfo) {
+        super(sessionInfo.ioData);
+    }
+
+    private UserBuilder(SaveGroup saveGroup) {
+        super(saveGroup.ioData);
+    }
+
     /**
      * Delete a user from the system
      */
@@ -60,6 +68,71 @@ public class UserBuilder extends RqlBuilder {
         public UserBuilder build() {
             this.ioData.setAdministration(this.administration);
             this.administration.setUser(this.user);
+            return new UserBuilder(this);
+        }
+    }
+
+    public static class SaveGroup implements IBuilder {
+        private final IoData ioData;
+        private final Administration administration;
+        private final User user;
+        private final List<Group> groupList;
+        private final String action = "save";
+
+        public SaveGroup(String userGuid) {
+            this.ioData = new IoData();
+            this.administration = new Administration();
+            this.user = new User(userGuid);
+            this.groupList = new ArrayList<Group>();
+        }
+
+        public SaveGroup Group(String groupGuid) {
+            Group group = new Group(groupGuid);
+            group.setChecked(true);
+            this.groupList.add(group);
+            return this;
+        }
+
+        @Override
+        public UserBuilder build() {
+            this.ioData.setAdministration(this.administration);
+            this.administration.setUser(this.user);
+            if(groupList.size() > 0) {
+                Groups groups = new Groups();
+                groups.setGroupList(this.groupList);
+                this.user.setGroups(groups);
+            }
+            return new UserBuilder(this);
+        }
+    }
+
+    /**
+     * Find out information of the current session
+     */
+    public static class SessionInfo implements IBuilder {
+        private final IoData ioData;
+        private final Project project;
+        private final User user;
+        private final String action = "sessioninfo";
+
+        /**
+         * Constructor to create a new SessionInfo instance
+         */
+        public SessionInfo() {
+            this.ioData = new IoData();
+            this.project = new Project();
+            this.user = new User();
+            this.user.setAction(this.action);
+        }
+
+        /**
+         * Build the final Rql-Statement
+         * @return new UserBuilder instance
+         */
+        @Override
+        public UserBuilder build() {
+            this.ioData.setProject(this.project);
+            this.project.setUser(this.user);
             return new UserBuilder(this);
         }
     }

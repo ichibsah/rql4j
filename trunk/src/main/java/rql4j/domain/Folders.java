@@ -19,10 +19,6 @@ import java.util.List;
 
 public class Folders {
 
-    public static enum FolderType {
-        FILE, CONTENT_CLASS, EXTERNAL, XCMS, STYLESHEET, HUMMINGBIRD
-    }
-
     private String action;
     private List<Folder> folderList;
     private FolderType folderType;
@@ -46,15 +42,15 @@ public class Folders {
         this.folderList = folderList;
     }
 
-    public FolderType getFolderType() {
-        return folderType;
-    }
+	public FolderType getFolderType() {
+		return folderType;
+	}
 
-    public void setFolderType(FolderType folderType) {
-        this.folderType = folderType;
-    }
+	public void setFolderType(FolderType folderType) {
+		this.folderType = folderType;
+	}
 
-    @Override
+	@Override
     public String toString() {
         return "Folders{" +
                 "action='" + action + '\'' +
