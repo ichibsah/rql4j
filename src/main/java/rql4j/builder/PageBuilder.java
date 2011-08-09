@@ -162,32 +162,29 @@ public class PageBuilder extends RqlBuilder {
 
     }
 
+	// ToDo: Implement TestCase and Docu
     public static class Save implements IBuilder {
         private final IoData ioData;
-        private final List<Page> pages;
-        private final String action;
+        private final Page page;
+        private final String action = "save";
 
-        public Save() {
-            this.pages = new ArrayList<Page>();
-            this.ioData = new IoData();
-            this.action = "save";
+        public Save(String pageGuid, Page.ActionFlag actionFlag) {
+			this.ioData = new IoData();
+            this.page = new Page(pageGuid);
+			this.page.setActionFlag(actionFlag);
+			this.page.setAction(this.action);
         }
 
-        public Save Page(String pageGuid, Page.ActionFlag flagPage) {
-            if (pageGuid == null)
-                throw new NullPointerException("pageGuid is null");
-            if (flagPage == null)
-                throw new NullPointerException("flagPage is null");
-            Page page = new Page(pageGuid);
-            page.setAction(this.action);
-            page.setActionFlag(flagPage);
-            this.pages.add(page);
-            return this;
-        }
+		public Save(String pageGuid, String newPageHeadline) {
+			this.ioData = new IoData();
+			this.page = new Page(pageGuid);
+			this.page.setHeadline(newPageHeadline);
+			this.page.setAction(this.action);
+		}
 
         @Override
         public PageBuilder build() {
-            this.ioData.setPageList(this.pages);
+            this.ioData.setPage(this.page);
             return new PageBuilder(this);
         }
     }

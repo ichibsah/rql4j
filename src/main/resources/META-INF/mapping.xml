@@ -30,7 +30,7 @@
         <field name="eltDefaultValue" type="java.lang.String">
             <bind-xml name="eltdefaultvalue" node="attribute"/>
         </field>
-        <field name="denys" type="java.lang.Boolean">
+        <field name="denys" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
             <bind-xml name="denys" node="attribute"/>
         </field>
         <field name="languageVariantId" type="string">
@@ -61,7 +61,7 @@
         <field name="flags" type="string">
             <bind-xml name="flags" node="attribute"/>
         </field>
-        <field name="eltRequired" type="java.lang.Boolean">
+        <field name="eltRequired" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
             <bind-xml name="eltrequired" node="attribute"/>
         </field>
         <field name="formularOrderId" type="string">
@@ -94,7 +94,7 @@
         <field name="templateElementFlags" type="java.lang.String">
             <bind-xml name="templateelementflags" node="attribute"/>
         </field>
-        <field name="templateElementIsLink" type="java.lang.Boolean">
+        <field name="templateElementIsLink" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
             <bind-xml name="templateelementislink" node="attribute"/>
         </field>
         <field name="value" type="java.lang.String">
@@ -289,6 +289,12 @@
         </field>
     </class>
 
+    <class name="rql4j.domain.PBCache">
+        <field name="cache" type="rql4j.domain.Cache">
+            <bind-xml name="CACHE"/>
+        </field>
+    </class>
+
     <class name="rql4j.domain.Administration">
         <field name="name" type="string">
             <bind-xml name="name" node="attribute"/>
@@ -313,6 +319,12 @@
         </field>
         <field name="modules" type="rql4j.domain.Modules">
             <bind-xml name="MODULES"/>
+        </field>
+    </class>
+
+    <class name="rql4j.domain.Cache">
+        <field name="action" type="java.lang.String">
+            <bind-xml name="action" node="attribute"/>
         </field>
     </class>
 
@@ -841,6 +853,9 @@
         <field name="projects" type="rql4j.domain.Projects">
             <bind-xml name="PROJECTS"/>
         </field>
+        <field name="accountSystemGuid" type="java.lang.String">
+            <bind-xml name="accountsystemguid" node="attribute"/>
+        </field>
     </class>
 
     <class name="rql4j.domain.Users">
@@ -902,6 +917,39 @@
         </field>
         <field name="updateTemplateProperties" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
             <bind-xml name="updatetemplateproperties" node="attribute"/>
+        </field>
+    </class>
+
+    <class name="rql4j.domain.SubFolder">
+        <field name="catalog" type="java.lang.String" handler="rql4j.domain.handler.FolderCatalogHandler">
+            <bind-xml name="catalog" node="attribute"/>
+        </field>
+        <field name="description" type="java.lang.String">
+            <bind-xml name="description" node="attribute"/>
+        </field>
+        <field name="folderType" type="java.lang.String" handler="rql4j.domain.handler.FolderTypeHandler">
+            <bind-xml name="foldertype" node="attribute"/>
+        </field>
+        <field name="guid" type="java.lang.String">
+            <bind-xml name="guid" node="attribute"/>
+        </field>
+        <field name="name" type="java.lang.String">
+            <bind-xml name="name" node="attribute"/>
+        </field>
+        <field name="path" type="java.lang.String">
+            <bind-xml name="guid" node="attribute"/>
+        </field>
+        <field name="saveType" type="java.lang.String" handler="rql4j.domain.handler.FolderSaveTypeHandler">
+            <bind-xml name="savetype" node="attribute"/>
+        </field>
+        <field name="shared" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="shared" node="attribute"/>
+        </field>
+    </class>
+
+    <class name="rql4j.domain.SubFolders">
+        <field name="subFolderList" type="rql4j.domain.SubFolder" collection="collection">
+            <bind-xml name="SUBFOLDER"/>
         </field>
     </class>
 
@@ -1202,6 +1250,9 @@
         <field name="checked" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
             <bind-xml name="checked" node="attribute"/>
         </field>
+        <field name="user" type="rql4j.domain.User">
+            <bind-xml name="USER"/>
+        </field>
     </class>
 
     <class name="rql4j.domain.ProjectVariant">
@@ -1374,7 +1425,7 @@
         <field name="checkDate" type="string" handler="rql4j.domain.handler.DateHandler">
             <bind-xml name="checkeddate" node="attribute"/>
         </field>
-        <field name="ThumbExist" type="java.lang.Boolean">
+        <field name="ThumbExist" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
             <bind-xml name="thumbexist" node="attribute"/>
         </field>
         <field name="deletereal" type="int">
@@ -1395,10 +1446,10 @@
         <field name="fileCount" type="java.lang.Integer">
             <bind-xml name="filecount" node="attribute"/>
         </field>
-        <field name="OverFlow" type="java.lang.Boolean">
+        <field name="OverFlow" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
             <bind-xml name="overflow" node="attribute"/>
         </field>
-        <field name="Versioning" type="java.lang.Boolean">
+        <field name="Versioning" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
             <bind-xml name="versioning" node="attribute"/>
         </field>
         <field name="fileList" type="rql4j.domain.File" collection="collection">
@@ -1428,6 +1479,36 @@
         <field name="name" type="java.lang.String">
             <bind-xml name="name" node="attribute"/>
         </field>
+        <field name="shared" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="shared" node="attribute"/>
+        </field>
+        <field name="folderType" type="java.lang.String" handler="rql4j.domain.handler.FolderTypeHandler">
+            <bind-xml name="foldertype" node="attribute"/>
+        </field>
+        <field name="hideInTextEditor" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="hideintexteditor" node="attribute"/>
+        </field>
+        <field name="description" type="java.lang.String">
+            <bind-xml name="description" node="attribute"/>
+        </field>
+        <field name="dms" type="java.lang.String">
+            <bind-xml name="dms" node="attribute"/>
+        </field>
+        <field name="folderRights" type="java.lang.String">
+            <bind-xml name="folderrights" node="attribute"/>
+        </field>
+        <field name="path" type="java.lang.String">
+            <bind-xml name="path" node="attribute"/>
+        </field>
+        <field name="saveType" type="java.lang.String" handler="rql4j.domain.handler.FolderSaveTypeHandler">
+            <bind-xml name="savetype" node="attribute"/>
+        </field>
+        <field name="catalog" type="java.lang.String" handler="rql4j.domain.handler.FolderCatalogHandler">
+            <bind-xml name="catalog" node="attribute"/>
+        </field>
+        <field name="subFolders" type="rql4j.domain.SubFolders">
+            <bind-xml name="SUBFOLDERS"/>
+        </field>
     </class>
 
     <class name="rql4j.domain.Folders">
@@ -1439,6 +1520,21 @@
         </field>
         <field name="folderType" type="java.lang.String" handler="rql4j.domain.handler.FolderTypeHandler">
             <bind-xml name="foldertype" node="attribute"/>
+        </field>
+    </class>
+
+    <class name="rql4j.domain.Group">
+        <field name="guid" type="java.lang.String">
+            <bind-xml name="guid" node="attribute"/>
+        </field>
+        <field name="checked" type="java.lang.String" handler="rql4j.domain.handler.BooleanHandler">
+            <bind-xml name="checked" node="attribute"/>
+        </field>
+    </class>
+
+    <class name="rql4j.domain.Groups">
+        <field name="groupList" type="rql4j.domain.Group" collection="collection">
+            <bind-xml name="GROUP"/>
         </field>
     </class>
 
@@ -1569,6 +1665,9 @@
         </field>
         <field name="modules" type="rql4j.domain.Modules">
             <bind-xml name="MODULES"/>
+        </field>
+        <field name="pbCache" type="rql4j.domain.PBCache">
+            <bind-xml name="PBCACHE"/>
         </field>
     </class>
 

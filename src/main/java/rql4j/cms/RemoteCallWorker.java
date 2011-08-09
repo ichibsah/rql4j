@@ -135,7 +135,8 @@ public class RemoteCallWorker {
         try {
             Unmarshaller unmarshaller = new Unmarshaller(mapping);
             unmarshaller.setWhitespacePreserve(true);
-            data = (IoData) unmarshaller.unmarshal(new StringReader(result));
+			if(!result.trim().equals(""))
+            	data = (IoData) unmarshaller.unmarshal(new StringReader(result));
 
         } catch (Exception e) {
             e.printStackTrace();

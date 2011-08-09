@@ -88,4 +88,15 @@ public class UserBuilderTest extends TestCase {
         UserBuilder userBuilder = new UserBuilder.Delete(properties.getProperty("cms.test.user.delete.guid")).build();
         command.getResult(userBuilder);
     }
+
+    public void testUserBuilderSessionInfo() throws Exception {
+        UserBuilder userBuilder = new UserBuilder.SessionInfo().build();
+        command.getResult(userBuilder);
+    }
+
+    public void testUserBuilderSaveGroup() throws Exception {
+        UserBuilder userBuilder = new UserBuilder.SaveGroup(properties.getProperty("cms.test.user.guid"))
+                .Group(properties.getProperty("cms.test.goup.guid")).build();
+        command.getResult(userBuilder);
+    }
 }

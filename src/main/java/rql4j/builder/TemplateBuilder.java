@@ -32,6 +32,10 @@ public class TemplateBuilder extends RqlBuilder {
         super(save.ioData);
     }
 
+	private TemplateBuilder(Delete delete) {
+		super(delete.ioData);
+	}
+
     public static class LoadAll implements IBuilder {
         private final IoData ioData;
         private final Project project;
@@ -133,4 +137,27 @@ public class TemplateBuilder extends RqlBuilder {
             return new TemplateBuilder(this);
         }
     }
+
+	//ToDo: implement TestCase
+	public static class Delete implements IBuilder {
+
+		private final IoData ioData;
+		private final Project project;
+		private final Template template;
+		private final String action = "delete";
+
+		public Delete(String contentClassGuid) {
+			this.ioData = new IoData();
+			this.project = new Project();
+			this.template = new Template(contentClassGuid);
+			this.template.setAction(this.action);
+		}
+
+		@Override
+		public TemplateBuilder build() {
+			this.ioData.setProject(this.project);
+			this.project.setTemplate(this.template);
+			return new TemplateBuilder(this);
+		}
+	}
 }

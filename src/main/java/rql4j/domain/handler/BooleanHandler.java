@@ -21,9 +21,9 @@ public class BooleanHandler extends GeneralizedFieldHandler {
     @Override
     public Object convertUponGet(Object o) {
         String value = null;
-        if(o == null)
+        if (o == null)
             return value;
-        if((Boolean)o)
+        if ((Boolean) o)
             value = "1";
         else
             value = "0";
@@ -33,11 +33,15 @@ public class BooleanHandler extends GeneralizedFieldHandler {
     @Override
     public Object convertUponSet(Object o) {
         Boolean value = null;
-        Integer integer = Integer.parseInt((String)o);
-        if(integer != null && integer == 1)
-            value = true;
-        else if (integer != null && integer == 0)
-            value = false;
+        try {
+            Integer integer = Integer.parseInt((String) o);
+            if (integer != null && integer == 1)
+                value = true;
+            else if (integer != null && integer == 0)
+                value = false;
+        } catch (NumberFormatException e) {
+            return null;
+        }
         return value;
     }
 

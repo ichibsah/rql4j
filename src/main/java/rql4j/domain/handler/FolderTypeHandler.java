@@ -14,71 +14,60 @@
 
 package rql4j.domain.handler;
 
-import rql4j.domain.Folders;
-import org.exolab.castor.mapping.FieldHandler;
-import org.exolab.castor.mapping.ValidityException;
+import org.exolab.castor.mapping.GeneralizedFieldHandler;
+import rql4j.domain.FolderType;
 
-public class FolderTypeHandler implements FieldHandler {
-    @Override
-    public Object getValue(Object o) throws IllegalStateException {
-        Folders folders = (Folders) o;
-        Folders.FolderType folderType = folders.getFolderType();
-        if (folderType != null) {
-            switch (folderType) {
-                case FILE:
-                    return "0";
-                case CONTENT_CLASS:
-                    return "1";
-                case EXTERNAL:
-                    return "4";
-                case XCMS:
-                    return "5";
-                case STYLESHEET:
-                    return "6";
-                case HUMMINGBIRD:
-                    return "7";
-                default:
-                    return null;
-            }
-        }
-        return null;
-    }
+public class FolderTypeHandler extends GeneralizedFieldHandler {
 
-    @Override
-    public void setValue(Object o, Object value) throws IllegalStateException, IllegalArgumentException {
-        Folders folders = (Folders) o;
-        Folders.FolderType folderType;
-        String folderTypeValue = (String)value;
+	@Override
+	public Object convertUponGet(Object o) {
+		String value = null;
+		if (o == null)
+			return value;
+		if (o == FolderType.FILE)
+			value = "0";
+		else if (o == FolderType.CONTENT_CLASS)
+			value = "1";
+		else if (o == FolderType.EXTERNAL)
+			value = "4";
+		else if (o == FolderType.XCMS)
+			value = "5";
+		else if (o == FolderType.STYLESHEET)
+			value = "6";
+		else if (o == FolderType.HUMMINGBIRD)
+			value = "7";
+		else
+			value = null;
+		return value;
+	}
 
-        if(folderTypeValue.equals("0"))
-            folderType = Folders.FolderType.FILE;
-        else if(folderTypeValue.equals("1"))
-            folderType = Folders.FolderType.CONTENT_CLASS;
-        else if(folderTypeValue.equals("4"))
-            folderType = Folders.FolderType.EXTERNAL;
-        else if(folderTypeValue.equals("5"))
-            folderType = Folders.FolderType.XCMS;
-        else if(folderTypeValue.equals("6"))
-            folderType = Folders.FolderType.STYLESHEET;
-        else if(folderTypeValue.equals("7"))
-            folderType = Folders.FolderType.HUMMINGBIRD;
-        else folderType = null;
+	@Override
+	public Object convertUponSet(Object o) {
+		FolderType value = null;
+		try {
+			Integer integer = Integer.parseInt((String) o);
+			if (integer != null) {
+				if (integer == 0)
+					value = FolderType.FILE;
+				else if (integer == 1)
+					value = FolderType.CONTENT_CLASS;
+				else if (integer == 4)
+					value = FolderType.EXTERNAL;
+				else if (integer == 5)
+					value = FolderType.XCMS;
+				else if(integer == 6)
+					value = FolderType.STYLESHEET;
+				else if(integer == 	7)
+					value = FolderType.HUMMINGBIRD;
+			}
+		} catch (NumberFormatException e) {
+			return null;
+		}
+		return value;
+	}
 
-        folders.setFolderType(folderType);
-    }
-
-    @Override
-    public Object newInstance(Object o) throws IllegalStateException {
-        return null;
-    }
-
-    @Override
-    public void resetValue(Object o) throws IllegalStateException, IllegalArgumentException {
-        ((Folders) o).setFolderType(null);
-    }
-
-    @Override
-    @Deprecated
-    public void checkValidity(Object o) throws ValidityException, IllegalStateException {
-    }
+	@Override
+	public Class getFieldType() {
+		return FolderType.class;
+	}
 }

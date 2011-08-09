@@ -14,9 +14,7 @@
 
 package rql4j.builder;
 
-import rql4j.domain.Folders;
-import rql4j.domain.IoData;
-import rql4j.domain.Project;
+import rql4j.domain.*;
 
 public class FoldersBuilder extends RqlBuilder {
     private FoldersBuilder(List list) {
@@ -37,7 +35,7 @@ public class FoldersBuilder extends RqlBuilder {
             this.folders.setAction(this.action);
         }
 
-        public List folderType(Folders.FolderType folderType) {
+        public List folderType(FolderType folderType) {
             this.folders.setFolderType(folderType);
             return this;
         }

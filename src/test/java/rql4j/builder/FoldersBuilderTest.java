@@ -18,6 +18,7 @@ import rql4j.cms.CmsServer;
 import rql4j.cms.RemoteCallWorker;
 import rql4j.cms.RqlCommand;
 import rql4j.domain.Folder;
+import rql4j.domain.FolderType;
 import rql4j.domain.Folders;
 import rql4j.iodata.IoAdminstration;
 import junit.framework.TestCase;
@@ -53,10 +54,11 @@ public class FoldersBuilderTest extends TestCase {
     }
 
     public void testFodlersBuilderList() throws Exception {
-        FoldersBuilder builder = new FoldersBuilder.List().folderType(Folders.FolderType.CONTENT_CLASS).build();
+        FoldersBuilder builder = new FoldersBuilder.List().folderType(FolderType.CONTENT_CLASS).build();
         List<Folder> folderList = command.getResult(builder).getFolders();
-        assertEquals(5, folderList.size());
-        Folder basis = command.getResult(builder).getFolderByName("basis");
-        assertEquals("basis", basis.getName());
+        assertEquals(13, folderList.size());
+        Folder basis = command.getResult(builder).getFolderByName("0001 - 0200 Content Types");
+        assertEquals("0001 - 0200 Content Types", basis.getName());
+		assertEquals(FolderType.CONTENT_CLASS ,basis.getFolderType());
     }
 }
