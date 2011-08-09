@@ -1,0 +1,55 @@
+/*
+ * Copyright 2011 Burkhard Pauli (http://www.bpauli.de)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under the License.
+ */
+
+package rql4j.domain.handler;
+
+import org.exolab.castor.mapping.GeneralizedFieldHandler;
+import rql4j.domain.Folder;
+
+public class FolderCatalogHandler extends GeneralizedFieldHandler {
+
+    @Override
+    public Object convertUponGet(Object o) {
+        String value = null;
+        if (o == null)
+            return value;
+        if (o == Folder.Catalog.STANDARD_FILE_FOLDER)
+            value = "0";
+		else if(o == Folder.Catalog.ASSET_MANAGER)
+			value = "1";
+        else
+            value = null;
+        return value;
+    }
+
+    @Override
+    public Object convertUponSet(Object o) {
+        Folder.Catalog value = null;
+        try {
+            Integer integer = Integer.parseInt((String) o);
+            if (integer != null && integer == 1)
+                value = Folder.Catalog.ASSET_MANAGER;
+            else if (integer != null && integer == 0)
+                value = Folder.Catalog.STANDARD_FILE_FOLDER;
+        } catch (NumberFormatException e) {
+            return null;
+        }
+        return value;
+    }
+
+    @Override
+    public Class getFieldType() {
+        return Folder.Catalog.class;
+    }
+}
